@@ -18,7 +18,7 @@ public class UserService {
     private final PasswordEncoder passwordEncoder;
 
     public void registerUser(RegisterDetailsDTO user) {
-        //create user => UserAlreadyExistException
+       // create user => UserAlreadyExistException
         User userEntity = userMapper.toEntity(user);
 
         userEntity.setPassword(passwordEncoder.encode(userEntity.getPassword()));
