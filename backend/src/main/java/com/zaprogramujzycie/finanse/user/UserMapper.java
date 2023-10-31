@@ -29,7 +29,9 @@ public interface UserMapper {
     List<UserDTO> toDTOs(List<User> users);
     @Mapping(target = "password", ignore = true)
     RegisterDetailsDTO toRegisterDetailsDTO(UserDTO userDTO);
-    void updateEntity(@MappingTarget Optional<User> userToUpdate, UserDTO updatedUser);//
+    void updateEntity(@MappingTarget Optional<User> userToUpdate, UserDTO updatedUser);
+
+
 
 
 /*
