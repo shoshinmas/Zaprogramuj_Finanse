@@ -18,7 +18,7 @@ public class UserService {
     private final PasswordEncoder passwordEncoder;
 
     public void registerUser(RegisterDetailsDTO user) {
-        //create user => UserAlreadyExistException
+       // create user => UserAlreadyExistException
         User userEntity = userMapper.toEntity(user);
 
         userEntity.setPassword(passwordEncoder.encode(userEntity.getPassword()));
@@ -40,8 +40,14 @@ public class UserService {
         return userMapper.toDTOs(users);
     }
 
+
+
+
+
     public UserDTO getUserById(String id) {
-        Optional<User> user = userRepository.findById(id);
+        Optional<User> userOptional = userRepository.findById(id);
+        User user =  userOptional.orElseThrow(() ->  new RuntimeException("User not found - Nie znaleziono użytkownika"));
+
         return userMapper.toDTO(user);
     }
 
